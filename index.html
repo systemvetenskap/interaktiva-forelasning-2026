@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html lang="sv">
 <head>
 	<meta charset="utf-8">
+	<meta name="description" content="Shut the box game in browser, funnest ever!">
+  	<meta name="keywords" content="Shut the box, Play">
+  	<meta name="author" content="Jonatan Lundgren">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="css/stylesheet.css">
 	<link rel="icon" type="image/x-icon" href="/images/favicon.ico">
-	<title>Shut the box 🎲🎲</title>
+	<title>Shut the box <span aria-hidden="true">🎲🎲</span></title>
 </head>
 <body>
 	<div class="super-header">
 		<p>Text</p>
 		<p>Annan Text</p>
-		<p>Text3</p>
+		<p id="current-player">Jonatan</p>
 	</div>
 	<div class="main-container">
 		<header>
@@ -25,7 +28,7 @@
 		</nav>
 		<main>
 			<h2>Öppna spelrum</h2>
-			<section>				
+			<section id="open-game-rooms" class="flex-section">				
 				<article>
 					<h3>Hörnan</h3>
 					<p>Maxantal spelare: <span id="room1maxplayers">4</span></p>
@@ -71,12 +74,78 @@
 						<p>🦉 Liza</p>
 					</div>
 				</article>
-			</section>			
+			</section>
+			<hr>
+			<h2>Aktiva spel</h2>
+			<section class="grid-section">
+				<article class="grid-article-a">
+					<ul>
+						<li>5dl Mjölk</li>
+						<li>2,5dl mjöl</li>
+						<li>2st ägg</li>
+					</ul>
+					<hr>
+					<ol>
+						<li>Vispa först äggen lätt</li>
+						<li>Tillsätt hälften av mjölken</li>
+						<li>Tillsätt mjölet</li>
+						<li>Tillsätt resten av ingredienserna</li>
+						<li>Steka pannkakorna</li>
+					</ol>
+				</article>
+				<article class="grid-article-b">
+					<p>Typ B</p>
+				</article>
+				<article class="grid-article-c">
+					<h3>Typ C</h3>
+				</article>
+				<article class="grid-article-d">
+					<h3>Typ D</h3>
+				</article>
+				<article class="grid-article-a">
+					<h3>Typ D</h3>
+				</article>
+				<article class="grid-article-b">
+					<h3>Typ D</h3>
+				</article>
+				<article class="grid-article-d">
+					<h3>Typ D</h3>
+				</article>
+			</section>
 		</main>		
 		<footer>
 			<hr>
 			Copyright 2026 Jonatan Lundgren Mittuniversitetet
 		</footer>
+		<dialog open id="popup" class="info">
+			<h3 id="popup-heading">Rubrik</h3>
+			<p id="popup-message">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati, quo sapiente ea eveniet dolorem vitae ducimus excepturi maiores tempore doloribus reprehenderit esse culpa provident facilis perspiciatis, quae, consequatur ipsa possimus.</p>
+			<button id="popup-button-close">Stäng</button>
+		</dialog>		
 	</div>	
 </body>
 </html>
+<script>
+	const popup = document.getElementById("popup");
+	const btnPopupClose = document.getElementById("popup-button-close");
+	const openGameRooms = document.getElementById("open-game-rooms");
+	const currentPlayer = document.getElementById("current-player");
+
+	btnPopupClose.addEventListener("click", () => {
+		popup.close();
+
+		openGameRooms.innerHTML = "";
+
+		const article = document.createElement("article");		
+		const h3 = document.createElement("h3");
+		h3.innerText = "Biografen";
+		h3.classList.add("blue-text");
+		
+		article.appendChild(h3);
+
+		openGameRooms.appendChild(article);
+
+		currentPlayer.innerText = "Arseni";
+
+	});
+</script>
